@@ -10,7 +10,6 @@ const estado = ref ('')
 const Hobbie = ref ('')
 const Linguagem = ref ('')
 const Biografia = ref ('')
-const Enviar = ref ('')
 const Mostar = ref (false)
 
 </script>
@@ -147,7 +146,7 @@ placeholder="Senha" required>
   <textarea class="form-control" id="validationTextarea" 
   placeholder="Required example textarea" required></textarea>
 <div>
-  <p>  </p>
+  <p> </p>
   <button type="submit" class="btn btn-primary">Enviar</button>
 </div>
 
