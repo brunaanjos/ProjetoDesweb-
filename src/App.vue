@@ -1,17 +1,22 @@
 <script setup>
 import { ref } from 'vue';
-const nome = ''
-const Email = ''
-const Senha = ''
-const Confirmar = ''
-const moth = ''
-const endereco = ''
-const cidade = ''
-const estado = ''
+const nome = ref('')
+const Email =  ref('')
+const Senha = ref('')
+const Confirmar =ref ('')
+const Month = ref ('')
+const endereco = ref('')
+const estado = ref ('')
+const Hobbie = ref ('')
+const Linguagem = ref ('')
+const Biografia = ref ('')
+const Enviar = ref ('')
+const Mostar = ref (false)
 
 </script>
 
 <template>
+  <form @submit.prevent="Mostar = !Mostar">
   <h1>Perfil Do Usuario</h1>
   <div>
     <p>Nome</p>
@@ -71,55 +76,100 @@ placeholder="Senha" required>
       <option value="31">31</option>
       
     </select>
-    <input type="moth" v-model="Moth">
+    <input type="Month" v-model="Month">
   </div>
   <div>
     <p>Endereço</p>
     <input type="endereco" v-model="endereco" 
     placeholder="Endereço" required/>
   </div>
-  <div>
-    <p>Estado</p>
-    <input type="estado" v-model="estado" 
-    placeholder="Estado" required/>
-  </div>
+
   <div class="col-md-3">
     <p>Estado</p>
     <label for="validationDefault04" class="form-label"></label>
     <select class="form-select" id="validationDefault04" required>
       <option selected disabled value="">Estado</option>
-      <option value="">AC</option>
-      <option value="2">AL</option>
-      <option value="3">AP</option>
-      <option value="4">AM</option>
-      <option value="5">BA</option>
-      <option value="6">CE</option>
-      <option value="7">DF</option>
-      <option value="8">ES</option>
-      <option value="9">GO</option>
-      <option value="10">MA</option>
-      <option value="11">MT</option>
-      <option value="12">MS</option>
-      <option value="13">MG</option>
-      <option value="14">PA</option>
-      <option value="15">PB</option>
-      <option value="16">PR</option>
-      <option value="1">PE</option>
-      <option value="18">PI</option>
-      <option value="19">RJ</option>
-      <option value="20">RN</option>
-      <option value="21">RS</option>
-      <option value="22">RO</option>
-      <option value="23">RR</option>
-      <option value="24">SC</option>
-      <option value="25">SP</option>
-      <option value="26">SE</option>
-      <option value="27">TO</option>
+      <option value="Acre">AC</option>
+      <option value="Alagoas">AL</option>
+      <option value="Amapá">AP</option>
+      <option value="Amazonas">AM</option>
+      <option value="Bahia">BA</option>
+      <option value="Ceará">CE</option>
+      <option value="Distrito Federal">DF</option>
+      <option value="Espírito Santo">ES</option>
+      <option value="Goiás">GO</option>
+      <option value="Maranhão">MA</option>
+      <option value="Mato Grosso">MT</option>
+      <option value="Mato Grosso do Sul">MS</option>
+      <option value="Minas Gerais">MG</option>
+      <option value="Pará">PA</option>
+      <option value="Paraíba">PB</option>
+      <option value="Paraná">PR</option>
+      <option value="Pernambuco">PE</option>
+      <option value="Piauí">PI</option>
+      <option value="Rio de Janeiro">RJ</option>
+      <option value="Rio Grande do Norte">RN</option>
+      <option value="Rio Grande do sul">RS</option>
+      <option value="Rondônia">RO</option>
+      <option value="Roraima">RR</option>
+      <option value="Santa Catarina">SC</option>
+      <option value="São Paulo">SP</option>
+      <option value="Sergipe">SE</option>
+      <option value="Tocantis">TO</option>
       
     </select>
    
   </div>
+  <div>
+    <p>Hobbies</p>
+  <input type="text" v-model="Hobbie" 
+  placeholder="Diga o seu Hobbie" required/>
+  </div>
+  <div class="col-md-3">
+    <p>Linguagem</p>
+    <label for="validationDefault04" class="form-label"></label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Linguagem</option>
+      <option value="Python">Python</option>
+      <option value="PHP">PHP</option>
+      <option value="JavaScript">JavaScript</option>
+      <option value="Swift">Swift</option>
+      <option value="Java">Java</option>
+      <option value="Go">Go</option>
+      <option value="SQL">SQL</option>
+      <option value="Ruby">Ruby</option>
+      
+    </select>
+   
+  </div>
+  
+  <p>Biografia</p>
+  <textarea class="form-control" id="validationTextarea" 
+  placeholder="Required example textarea" required></textarea>
+<div>
+  <p>  </p>
+  <button type="submit" class="btn btn-primary">Enviar</button>
 </div>
+
+<div v-if="Mostar">
+
+<div>Nome:{{ nome }}</div>
+<div>Email:{{ Email }}</div>
+<div>Senha:{{ Senha}}</div>
+<div>Confirmar:{{ Confirmar }}</div>
+<div>Data Nascimento:{{ Month }}</div>
+<div>Endereço:{{ endereco }}</div>
+<div>estado:{{ estado}}</div>
+<div>Hobbie:{{ Hobbie}}</div>
+<div>Biografia:{{ Biografia}}</div>
+<div>Linguagem:{{ Linguagem}}</div>
+
+
+
+</div>
+
+</div>
+</form>
 
 </template>
 
