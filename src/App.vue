@@ -9,13 +9,13 @@ const estado = ref('')
 const hobbie = ref('')
 const linguagem = ref('')
 const biografia = ref('')
-const mostrar = ref(true)
+
 const viewSenha = ref(false)
 const viewConfirmarSenha = ref(false)
+const mostrar = ref(true)
 </script>
 
 <template>
-  
   <div id="editor">
 
     <form @submit.prevent="mostrar = !mostrar">
@@ -39,50 +39,15 @@ const viewConfirmarSenha = ref(false)
         <div>
           Confirmar:
           <div class="input-group mb-3">
-            <input :type="viewConfirmarSenha ? 'text' : 'password'" v-model="viewConfirmarSenha" placeholder="Senha" required>
+            <input :type="viewConfirmarSenha ? 'text' : 'password'" v-model="viewConfirmarSenha" placeholder="Senha"
+              required>
             <button class="btn" @click="viewConfirmarSenha = !viewConfirmarSenha">{{ viewConfirmarSenha ? 'Mostrar' :
               'Ocultar' }}</button>
           </div>
         </div>
         Nascimento:
 
-        <label for="validationDefault04" class="form-label"></label>
-        <select class="form-select" v-model="month" id="validationDefault04" required>
 
-          <option selected disabled value="">Dia</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-          <option value="24">24</option>
-          <option value="25">25</option>
-          <option value="26">26</option>
-          <option value="27">27</option>
-          <option value="28">28</option>
-          <option value="29">29</option>
-          <option value="30">30</option>
-          <option value="31">31</option>
-
-        </select>
         <input type="Date" v-model="month">
       </div>
       <div>
@@ -134,7 +99,7 @@ const viewConfirmarSenha = ref(false)
       </div>
       <div>
         <label for="validationDefault04" class="form-label"></label>
-        <select class="form-select" v-model="linguagem"  aria-label="Default select exemple" required>
+        <select class="form-select" v-model="linguagem" aria-label="Default select exemple" required>
           <option selected disabled value="">linguagem</option>
           <option value="Python">Python</option>
           <option value="PHP">PHP</option>
@@ -150,10 +115,11 @@ const viewConfirmarSenha = ref(false)
       </div>
 
       <p>biografia</p>
-      <textarea class="form-control" v-model="biografia" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+      <textarea class="form-control" v-model="biografia" id="validationTextarea" placeholder="Required example textarea"
+        required></textarea>
       <div>
         <p> </p>
-        <button type="button" class="btn btn-outline-light">Enviar</button>
+        <button type="submit" class="btn btn-outline-light">Enviar</button>
       </div>
 
       <div v-if="mostrar">
