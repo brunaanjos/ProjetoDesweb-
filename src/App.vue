@@ -1,42 +1,53 @@
 <script setup>
 import { ref } from 'vue';
 const nome = ref('')
-const Email = ref('')
-const Senha = ref('')
-const Confirmar = ref('')
-const Month = ref('')
+const email = ref('')
+const senha = ref('')
+const month = ref('')
 const endereco = ref('')
 const estado = ref('')
-const Hobbie = ref('')
-const Linguagem = ref('')
-const Biografia = ref('')
-const Mostar = ref(false)
-
+const hobbie = ref('')
+const linguagem = ref('')
+const biografia = ref('')
+const mostrar = ref(true)
+const viewSenha = ref(false)
+const viewConfirmarSenha = ref(false)
 </script>
 
 <template>
+  
   <div id="editor">
-    <form @submit.prevent="Mostar = !Mostar">
-      <h1>Perfil Do Usuario</h1>
+
+    <form @submit.prevent="mostrar = !mostrar">
+
+      <h1>Cadastrar-se</h1>
       <div>
-        <p>Nome</p>
+        Nome:
         <input type="text" v-model="nome" placeholder="nome" required />
       </div>
 
       <div>
-        <p>Email</p>
-        <input type="email" v-model="Email" placeholder="Email" required />
+        Email:
+        <input type="email" v-model="email" placeholder="email" required />
       </div>
       <div>
-        <p>Senha</p>
-        <input type="Senha" v-model="Senha" placeholder="Senha" required>
-        
-        <div>
-          <input type="Confirmar" v-model="Confirmar" placeholder="Confirmar" required />
+        Senha:
+        <div class="input-group mb-3">
+          <input :type="viewSenha ? 'text' : 'password'" v-model="senha" placeholder="Senha" required>
+          <button class="btn" @click="viewSenha = !viewSenha">{{ viewSenha ? 'Mostrar' : 'Ocultar' }}</button>
         </div>
-<p>Nacimento</p>
+        <div>
+          Confirmar:
+          <div class="input-group mb-3">
+            <input :type="viewConfirmarSenha ? 'text' : 'password'" v-model="viewConfirmarSenha" placeholder="Senha" required>
+            <button class="btn" @click="viewConfirmarSenha = !viewConfirmarSenha">{{ viewConfirmarSenha ? 'Mostrar' :
+              'Ocultar' }}</button>
+          </div>
+        </div>
+        Nascimento:
+
         <label for="validationDefault04" class="form-label"></label>
-        <select class="form-select" id="validationDefault04" required>
+        <select class="form-select" v-model="month" id="validationDefault04" required>
 
           <option selected disabled value="">Dia</option>
           <option value="1">1</option>
@@ -72,18 +83,20 @@ const Mostar = ref(false)
           <option value="31">31</option>
 
         </select>
-        <input type="Month" v-model="Month">
+        <input type="Date" v-model="month">
       </div>
       <div>
-        <p>Endereço</p>
+
+        Endereço:
         <input type="endereco" v-model="endereco" placeholder="Endereço" required />
       </div>
 
       <div>
-        <p>Estado</p>
+        Estado:
+
         <label for="validationDefault04" class="form-label"></label>
-        <select class="form-select" id="validationDefault04" required>
-          <option selected disabled value="">Estado</option>
+        <select class="form-select" v-model="estado" id="validationDefault04" required>
+          <option selected disabled value="">estado</option>
           <option value="Acre">AC</option>
           <option value="Alagoas">AL</option>
           <option value="Amapá">AP</option>
@@ -116,14 +129,13 @@ const Mostar = ref(false)
 
       </div>
       <div>
-        <p>Hobbies</p>
-        <input type="text" v-model="Hobbie" placeholder="Diga o seu Hobbie" required />
+        <p>hobbies</p>
+        <input type="text" v-model="hobbie" placeholder="Diga o seu Hobbie" required />
       </div>
       <div>
-        <p>Linguagem</p>
         <label for="validationDefault04" class="form-label"></label>
-        <select class="form-select" aria-label="Default select exemple" required>
-          <option selected disabled value="">Linguagem</option>
+        <select class="form-select" v-model="linguagem"  aria-label="Default select exemple" required>
+          <option selected disabled value="">linguagem</option>
           <option value="Python">Python</option>
           <option value="PHP">PHP</option>
           <option value="JavaScript">JavaScript</option>
@@ -137,25 +149,25 @@ const Mostar = ref(false)
 
       </div>
 
-      <p>Biografia</p>
-      <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+      <p>biografia</p>
+      <textarea class="form-control" v-model="biografia" id="validationTextarea" placeholder="Required example textarea" required></textarea>
       <div>
         <p> </p>
         <button type="button" class="btn btn-outline-light">Enviar</button>
       </div>
 
-      <div v-if="Mostar">
+      <div v-if="mostrar">
 
         <div>Nome:{{ nome }}</div>
-        <div>Email:{{ Email }}</div>
-        <div>Senha:{{ Senha }}</div>
-        <div>Confirmar:{{ Confirmar }}</div>
-        <div>Data Nascimento:{{ Month }}</div>
+        <div>Email:{{ email }}</div>
+        <div>Senha:{{ senha }}</div>
+        <div>Confirmar:{{ confirmar }}</div>
+        <div>Data Nascimento:{{ month }}</div>
         <div>Endereço:{{ endereco }}</div>
-        <div>estado:{{ estado }}</div>
-        <div>Hobbie:{{ Hobbie }}</div>
-        <div>Biografia:{{ Biografia }}</div>
-        <div>Linguagem:{{ Linguagem }}</div>
+        <div>Estado:{{ estado }}</div>
+        <div>Hobbie:{{ hobbie }}</div>
+        <div>Biografia:{{ biografia }}</div>
+        <div>Linguagem:{{ linguagem }}</div>
 
       </div>
     </form>
@@ -164,14 +176,13 @@ const Mostar = ref(false)
 
 <style scoped>
 #editor {
-  text-align: center;
-  margin: 5px;
-  background-color: rgb(195, 142, 231);
-  border-radius: 6px;
-  border-color: rgb(40, 172, 212);
+  text-align: left;
+  margin-left: 500px;
+  margin-right: 500px;
+  background-color: rgb(134, 33, 218);
+  border-radius: 50px;
   border-style: unset;
-  color: rgb(255, 255, 255);
-  padding: 15px
-
+  color: rgb(236, 216, 216);
+  padding: 70px
 }
 </style>
